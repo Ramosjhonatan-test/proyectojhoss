@@ -16,4 +16,10 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_public_auth_pages_are_available(): void
+    {
+        $this->get('/login')->assertStatus(200);
+        $this->get('/register')->assertStatus(200);
+    }
 }
