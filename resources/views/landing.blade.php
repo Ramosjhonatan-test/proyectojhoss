@@ -789,7 +789,7 @@
                 <div class="container hero-grid">
                     <div class="hero-copy">
                         <span class="badge">● Plataforma financiera del futuro</span>
-                        <h1>Controla tu dinero con claridad y velocidad.</h1>
+                        <h1>TE AMO....</h1>
                         <p>
                             Centraliza cuentas, pagos, presupuestos, inversiones y analítica financiera en una sola plataforma
                             diseñada para acelerar decisiones y proteger el flujo de efectivo de tu negocio.
