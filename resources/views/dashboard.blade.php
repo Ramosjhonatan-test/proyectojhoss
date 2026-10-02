@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Northstar Finance | Dashboard</title>
+        <title>Dashboard</title>
         <style>
             :root {
                 --bg: #f5f7fb;
@@ -48,13 +48,10 @@
                 padding: 0 8px 28px;
             }
 
-            .brand-mark {
+            .brand-logo {
                 width: 38px;
                 height: 38px;
-                border-radius: 12px;
-                display: grid;
-                place-items: center;
-                background: linear-gradient(135deg, #1d4ed8, #14b8a6);
+                object-fit: contain;
             }
 
             .nav {
@@ -305,8 +302,8 @@
         <div class="app-shell">
             <aside class="sidebar">
                 <div class="brand">
-                    <span class="brand-mark">N</span>
-                    <span>Northstar</span>
+                    <img class="brand-logo" src="{{ asset('logo/logo.png') }}" alt="">
+                    <span>Sistema Financiero</span>
                 </div>
 
                 <nav class="nav" aria-label="Sidebar menu">

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Northstar Finance | Sistema Financiero</title>
+        <title>Sistema Financiero</title>
         <meta name="description" content="Sistema financiero inteligente para pagos, control de flujo, inversiones y gestión financiera empresarial.">
         <style>
             :root {
@@ -40,7 +40,7 @@
             img { max-width: 100%; display: block; }
 
             .container {
-                width: min(1180px, calc(100% - 32px));
+                width: min(1500px, calc(100% - 72px));
                 margin: 0 auto;
             }
 
@@ -70,16 +70,10 @@
                 color: var(--text);
             }
 
-            .brand-mark {
+            .brand-logo {
                 width: 42px;
                 height: 42px;
-                border-radius: 14px;
-                background: linear-gradient(135deg, var(--primary-soft), #14b8a6 90%);
-                color: white;
-                display: grid;
-                place-items: center;
-                font-size: 1.2rem;
-                box-shadow: var(--shadow);
+                object-fit: contain;
             }
 
             .nav-links {
@@ -126,9 +120,14 @@
             }
 
             .btn-primary {
-                background: linear-gradient(135deg, var(--primary-soft), #1e9ad9 58%, #14b8a6);
+                background: var(--primary-soft);
                 color: #fff;
-                box-shadow: 0 16px 32px rgba(29, 78, 216, 0.28);
+                box-shadow: 0 8px 18px rgba(29, 78, 216, 0.18);
+            }
+
+            .btn-primary:hover {
+                background: #1e40af;
+                box-shadow: 0 10px 22px rgba(29, 78, 216, 0.24);
             }
 
             .hero {
@@ -154,6 +153,14 @@
                 font-size: 0.8rem;
                 font-weight: 700;
                 letter-spacing: 0.02em;
+            }
+
+            .badge-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: var(--secondary);
+                flex: 0 0 8px;
             }
 
             .hero-copy h1 {
@@ -203,6 +210,15 @@
 
             .hero-visual {
                 position: relative;
+            }
+
+            .hero-photo {
+                width: 100%;
+                height: 520px;
+                border-radius: 28px;
+                object-fit: cover;
+                object-position: center;
+                box-shadow: var(--shadow);
             }
 
             .dashboard-card {
@@ -405,8 +421,17 @@
                 border-radius: 16px;
                 background: linear-gradient(135deg, rgba(29,78,216,0.1), rgba(20,184,166,0.18));
                 color: var(--primary-soft);
-                font-size: 1.5rem;
                 margin-bottom: 16px;
+            }
+
+            .card-icon {
+                width: 25px;
+                height: 25px;
+                stroke: currentColor;
+                stroke-width: 1.7;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                fill: none;
             }
 
             .feature-card h3 {
@@ -641,7 +666,8 @@
             }
 
             .cta-box {
-                background: linear-gradient(135deg, #0f172a, #1d4ed8 50%, #0ea5a4);
+                background: #0f172a;
+                border-left: 6px solid var(--secondary);
                 border-radius: 30px;
                 padding: clamp(26px, 5vw, 50px);
                 display: flex;
@@ -650,6 +676,35 @@
                 gap: 20px;
                 color: white;
                 box-shadow: 0 30px 60px rgba(29,78,216,0.28);
+            }
+
+            html.reveal-ready [data-reveal] {
+                opacity: 0;
+                transform: translateY(24px);
+                transition: opacity 650ms ease, transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+            }
+
+            html.reveal-ready [data-reveal].is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .feature-card:nth-child(2),
+            .module-card:nth-child(2) { transition-delay: 80ms; }
+
+            .feature-card:nth-child(3),
+            .module-card:nth-child(3) { transition-delay: 160ms; }
+
+            .feature-card:nth-child(4) { transition-delay: 240ms; }
+
+            @media (prefers-reduced-motion: reduce) {
+                html { scroll-behavior: auto; }
+
+                html.reveal-ready [data-reveal] {
+                    opacity: 1;
+                    transform: none;
+                    transition: none;
+                }
             }
 
             .cta-box h2 {
@@ -744,6 +799,15 @@
                     grid-template-columns: 1fr;
                 }
 
+                .container {
+                    width: calc(100% - 32px);
+                }
+
+                .hero-photo {
+                    height: 360px;
+                    border-radius: 20px;
+                }
+
                 .section-head {
                     display: block;
                 }
@@ -763,23 +827,23 @@
     <body>
         <header class="topbar">
             <div class="container nav">
-                <a href="#inicio" class="brand" aria-label="Northstar Finance">
-                    <span class="brand-mark">N</span>
-                    <span>Northstar Finance</span>
+                <a href="#inicio" class="brand" aria-label="Sistema Financiero">
+                    <img class="brand-logo" src="{{ asset('logo/logo.png') }}" alt="">
+                    <span>Sistema Financiero</span>
                 </a>
 
                 <nav class="nav-links" aria-label="Menú principal">
                     <a href="#inicio">Inicio</a>
-                    <a href="#soluciones">Soluciones</a>
-                    <a href="#modulos">Módulos</a>
-                    <a href="#planes">Planes</a>
-                    <a href="#testimonios">Clientes</a>
+                    <a href="#soluciones">Clientes</a>
+                    <a href="#modulos">Préstamos</a>
+                    <a href="#cuotas">Cuotas</a>
+                    <a href="#reportes">Reportes</a>
                     <a href="#contacto">Contacto</a>
                 </nav>
 
                 <div class="nav-actions">
                     <a href="{{ route('login') }}" class="btn btn-outline">Iniciar sesión</a>
-                    <a href="{{ route('register') }}" class="btn btn-primary">Probar demo</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Crear cuenta</a>
                 </div>
             </div>
         </header>
@@ -788,66 +852,31 @@
             <section class="hero">
                 <div class="container hero-grid">
                     <div class="hero-copy">
-                        <span class="badge">● Plataforma financiera del futuro</span>
-                        <h1>TE AMO....</h1>
+                        <span class="badge"><span class="badge-dot"></span> Sistema de gestión crediticia</span>
+                        <h1>Administra clientes, préstamos y cobranzas desde un solo sistema.</h1>
                         <p>
-                            Centraliza cuentas, pagos, presupuestos, inversiones y analítica financiera en una sola plataforma
-                            diseñada para acelerar decisiones y proteger el flujo de efectivo de tu negocio.
+                            Registra clientes, controla préstamos, organiza planes de cuotas y registra pagos con trazabilidad
+                            para cada operación de ASSCOMPANY S.R.L.
                         </p>
 
                         <div class="hero-actions">
                             <a href="{{ route('register') }}" class="btn btn-primary">Crear cuenta</a>
-                            <a href="#soluciones" class="btn btn-outline">Ver cómo funciona</a>
+                            <a href="#modulos" class="btn btn-outline">Ver módulos</a>
                         </div>
 
                         <div class="mini-proof">
-                            <div class="item"><span class="dot"></span> 12.000+ usuarios activos</div>
-                            <div class="item"><span class="dot"></span> 99.98% de uptime</div>
-                            <div class="item"><span class="dot"></span> 47% menos tiempo operativo</div>
+                            <div class="item"><span class="dot"></span> Gestión de clientes</div>
+                            <div class="item"><span class="dot"></span> Seguimiento de cuotas</div>
+                            <div class="item"><span class="dot"></span> Registro auditable</div>
                         </div>
                     </div>
 
-                    <div class="hero-visual" aria-label="Dashboard financiero ilustrativo">
-                        <div class="dashboard-card">
-                            <div class="hero-window">
-                                <div class="window-top">
-                                    <span class="window-circle"></span>
-                                    <span class="window-circle"></span>
-                                    <span class="window-circle"></span>
-                                </div>
-
-                                <div class="stats-row">
-                                    <div class="stat-box">
-                                        <small>Ingresos</small>
-                                        <strong>$84.2K</strong>
-                                    </div>
-                                    <div class="stat-box">
-                                        <small>Gastos</small>
-                                        <strong>$42.9K</strong>
-                                    </div>
-                                    <div class="stat-box">
-                                        <small>ROI</small>
-                                        <strong>+21.8%</strong>
-                                    </div>
-                                </div>
-
-                                <div class="chart">
-                                    <strong style="color:#fff; font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase;">Evolución financiera</strong>
-                                    <div class="bars" aria-hidden="true">
-                                        <span class="bar" style="height:35%"></span>
-                                        <span class="bar" style="height:52%"></span>
-                                        <span class="bar" style="height:63%"></span>
-                                        <span class="bar" style="height:88%"></span>
-                                        <span class="bar" style="height:72%"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="hero-visual">
+                        <img class="hero-photo" src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80" alt="Asesoría financiera entre clientes y equipo de trabajo">
 
                         <div class="floating-card">
-                            <h4>Meta de caja</h4>
-                            <div class="progress"><span></span></div>
-                            <p style="margin:12px 0 0; font-weight:700; color:var(--text);">78% completado</p>
+                            <h4>Gestión de crédito</h4>
+                            <p style="margin:0; font-weight:700; color:var(--text);">Clientes · Préstamos · Cuotas</p>
                         </div>
                     </div>
                 </div>
@@ -856,11 +885,11 @@
             <section class="brands">
                 <div class="container">
                     <div class="brands-row">
-                        <div class="brand-pill">Apex</div>
-                        <div class="brand-pill">NovaPay</div>
-                        <div class="brand-pill">Crest</div>
-                        <div class="brand-pill">Metrica</div>
-                        <div class="brand-pill">Lumina</div>
+                        <div class="brand-pill">Clientes</div>
+                        <div class="brand-pill">Préstamos</div>
+                        <div class="brand-pill">Cuotas</div>
+                        <div class="brand-pill">Cobranzas</div>
+                        <div class="brand-pill">Auditoría</div>
                     </div>
                 </div>
             </section>
@@ -868,33 +897,33 @@
             <section id="soluciones">
                 <div class="container">
                     <div class="section-head">
-                        <h2>Todo lo que tu empresa necesita para crecer.</h2>
-                        <p>Una suite financiera pensada para equipos de ventas, finanzas, operaciones y dirección con visibilidad total.</p>
+                        <h2>Todo el ciclo del crédito, bajo control.</h2>
+                        <p>Consulta la información de clientes y acompaña cada préstamo desde su registro hasta el último pago.</p>
                     </div>
 
                     <div class="feature-grid">
                         <article class="feature-card">
-                            <div class="icon-wrap">💳</div>
-                            <h3>Pagos y cobranza</h3>
-                            <p>Automatiza facturas, cobros recurrentes y conciliación bancaria con alertas inteligentes.</p>
+                            <div class="icon-wrap"><svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                            <h3>Clientes</h3>
+                            <p>Organiza identificación, contacto y estado crediticio en una ficha centralizada.</p>
                         </article>
 
                         <article class="feature-card">
-                            <div class="icon-wrap">📊</div>
-                            <h3>Analytics en tiempo real</h3>
-                            <p>Monitorea indicadores clave de liquidez, rentabilidad y flujo de caja en un panel central.</p>
+                            <div class="icon-wrap"><svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6M7 16h4M16 14l2 2 3-4"/></svg></div>
+                            <h3>Préstamos</h3>
+                            <p>Registra montos, intereses, plazos, frecuencias de pago y estado de cada operación.</p>
                         </article>
 
                         <article class="feature-card">
-                            <div class="icon-wrap">🛡️</div>
-                            <h3>Control de riesgos</h3>
-                            <p>Detecta anomalías, evita fraudes y supervisa movimientos con políticas de acceso avanzadas.</p>
+                            <div class="icon-wrap"><svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h2M14 14h2M8 18h2"/></svg></div>
+                            <h3>Plan de cuotas</h3>
+                            <p>Consulta vencimientos, capital, intereses y estado de pago de cada cuota.</p>
                         </article>
 
                         <article class="feature-card">
-                            <div class="icon-wrap">📈</div>
-                            <h3>Planeación financiera</h3>
-                            <p>Modela escenarios, pronósticos y presupuestos con visualizaciones claras y simples.</p>
+                            <div class="icon-wrap"><svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 9h19M16 14h2M6 15h4"/></svg></div>
+                            <h3>Cobranzas</h3>
+                            <p>Registra pagos por efectivo, transferencia o QR con comprobante y responsable asignado.</p>
                         </article>
                     </div>
                 </div>
@@ -903,37 +932,37 @@
             <section>
                 <div class="container solution-layout">
                     <div class="solution-photo">
-                        <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80" alt="Equipo revisando datos financieros" style="height:100%; min-height:520px; object-fit:cover;">
+                        <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1200&q=80" alt="Revisión de documentos y cálculos financieros para préstamos" style="height:100%; min-height:520px; object-fit:cover;">
                     </div>
 
                     <div class="solution-content">
                         <div>
-                            <span class="badge" style="background: rgba(59,130,246,0.08); color:#1d4ed8; border-color: rgba(59,130,246,0.12);">Por qué elegir Northstar</span>
-                            <h2 style="font-size: clamp(2rem, 3vw, 3rem); letter-spacing: -0.05em; margin: 18px 0;">Más control, menos complejidad.</h2>
+                            <span class="badge" style="background: rgba(59,130,246,0.08); color:#1d4ed8; border-color: rgba(59,130,246,0.12);">ASSCOMPANY S.R.L.</span>
+                            <h2 style="font-size: clamp(2rem, 3vw, 3rem); letter-spacing: -0.05em; margin: 18px 0;">Información clara en cada etapa del préstamo.</h2>
                         </div>
 
                         <div class="check-list">
                             <div class="check-item">
                                 <span class="check-icon">✓</span>
                                 <div>
-                                    <strong>Dashboards financieros unificados</strong>
-                                    <span>Consolida bancos, tarjetas, cuentas por cobrar y por pagar en una sola vista.</span>
+                                    <strong>Expediente del cliente</strong>
+                                    <span>Consulta identificación, contacto y estado crediticio antes de registrar operaciones.</span>
                                 </div>
                             </div>
 
                             <div class="check-item">
                                 <span class="check-icon">✓</span>
                                 <div>
-                                    <strong>Automatización de procesos</strong>
-                                    <span>Reduce la carga manual con flujos de aprobación, pagos automáticos y alertas.</span>
+                                    <strong>Seguimiento de cuotas y pagos</strong>
+                                    <span>Revisa vencimientos y pagos recibidos para identificar cuotas pendientes o vencidas.</span>
                                 </div>
                             </div>
 
                             <div class="check-item">
                                 <span class="check-icon">✓</span>
                                 <div>
-                                    <strong>Seguridad empresarial</strong>
-                                    <span>Permisos por rol, auditoría completa y cifrado para cuidar cada operación.</span>
+                                    <strong>Control por usuario y auditoría</strong>
+                                    <span>Asigna roles y conserva un registro de acciones para dar seguimiento a cada cambio.</span>
                                 </div>
                             </div>
                         </div>
@@ -944,127 +973,89 @@
             <section id="modulos">
                 <div class="container">
                     <div class="section-head">
-                        <h2>Módulos para cada área de tu negocio.</h2>
-                        <p>Diseñado para equipos pequeños, medianos y corporativos que quieren tomar decisiones con base financiera.</p>
+                        <h2>Herramientas para operar el crédito.</h2>
+                        <p>Accede a las funciones principales para registrar, administrar y dar seguimiento a la cartera.</p>
                     </div>
 
                     <div class="modules-grid">
                         <article class="module-card">
-                            <span class="module-pill">Finanzas</span>
-                            <h3>Cuenta general</h3>
-                            <p>Visualiza saldos, movimientos y tendencias de cada cuenta en tiempo real.</p>
-                            <a href="#">Explorar módulo →</a>
+                            <span class="module-pill">Registro</span>
+                            <h3>Clientes</h3>
+                            <p>Administra identificación, contacto, dirección y clasificación crediticia.</p>
+                            <a href="{{ route('login') }}">Ingresar al sistema →</a>
+                        </article>
+
+                        <article class="module-card">
+                            <span class="module-pill">Cartera</span>
+                            <h3>Préstamos y garantías</h3>
+                            <p>Consulta monto, interés, plazo, frecuencia de pago y garantías asociadas.</p>
+                            <a href="{{ route('login') }}">Ingresar al sistema →</a>
                         </article>
 
                         <article class="module-card">
                             <span class="module-pill">Cobranza</span>
-                            <h3>Facturación</h3>
-                            <p>Genera facturas, programaciones y recordatorios para mejorar la liquidación de tus ingresos.</p>
-                            <a href="#">Explorar módulo →</a>
-                        </article>
-
-                        <article class="module-card">
-                            <span class="module-pill">Gestión</span>
-                            <h3>Presupuestos</h3>
-                            <p>Define objetivos, compara presupuestos reales vs planificados y corrige desviaciones.</p>
-                            <a href="#">Explorar módulo →</a>
+                            <h3>Cuotas y pagos</h3>
+                            <p>Da seguimiento a vencimientos, comprobantes, métodos de pago y saldos pendientes.</p>
+                            <a href="{{ route('login') }}">Ingresar al sistema →</a>
                         </article>
                     </div>
                 </div>
             </section>
 
-            <section id="planes">
+            <section id="cuotas">
                 <div class="container">
                     <div class="section-head">
-                        <h2>Precios que se adaptan a tu etapa.</h2>
-                        <p>Desde startups que necesitan orden hasta empresas con procesos financieros complejos.</p>
+                        <h2>Un seguimiento completo de cada cuota.</h2>
+                        <p>Consulta los componentes del pago y su estado para facilitar la gestión diaria de cobranzas.</p>
                     </div>
 
-                    <div class="pricing-grid">
-                        <article class="pricing-card">
-                            <h3>Starter</h3>
-                            <div class="price"><strong>$29</strong><span>/mes</span></div>
-                            <div class="price-sub">Ideal para emprendedores y negocios pequeños.</div>
-                            <ul>
-                                <li>2 usuarios</li>
-                                <li>Dashboard financiero</li>
-                                <li>Facturas y pagos básicos</li>
-                                <li>Soporte estándar</li>
-                            </ul>
-                            <a href="{{ route('register') }}" class="btn btn-outline" style="width:100%;">Elegir Starter</a>
+                    <div class="feature-grid">
+                        <article class="feature-card">
+                            <div class="icon-wrap"><svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M15 8.5c-.6-.7-1.5-1-3-1-1.7 0-2.7.8-2.7 2s1 1.8 2.7 2 2.7.7 2.7 2-1 2-2.7 2c-1.3 0-2.4-.4-3.1-1.2M12 5.5v13"/></svg></div>
+                            <h3>Capital</h3>
+                            <p>Revisa el monto de capital previsto para cada cuota del préstamo.</p>
                         </article>
-
-                        <article class="pricing-card featured">
-                            <h3>Growth</h3>
-                            <div class="price"><strong>$79</strong><span>/mes</span></div>
-                            <div class="price-sub">La mejor opción para equipos en crecimiento.</div>
-                            <ul>
-                                <li>Usuarios ilimitados</li>
-                                <li>Automatización y alertas</li>
-                                <li>Presupuestos avanzados</li>
-                                <li>Integraciones bancarias</li>
-                            </ul>
-                            <a href="{{ route('register') }}" class="btn btn-primary" style="width:100%;">Elegir Growth</a>
+                        <article class="feature-card">
+                            <div class="icon-wrap"><svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/><path d="m19 5-14 14"/></svg></div>
+                            <h3>Interés</h3>
+                            <p>Consulta el interés aplicado y el total a cobrar según el plan registrado.</p>
                         </article>
-
-                        <article class="pricing-card">
-                            <h3>Enterprise</h3>
-                            <div class="price"><strong>Custom</strong></div>
-                            <div class="price-sub">Solución personalizada para organizaciones complejas.</div>
-                            <ul>
-                                <li>Multiempresa</li>
-                                <li>Seguridad avanzada</li>
-                                <li>Soporte premium</li>
-                                <li>Consultoría financiera</li>
-                            </ul>
-                            <a href="#contacto" class="btn btn-outline" style="width:100%;">Contactar ventas</a>
+                        <article class="feature-card">
+                            <div class="icon-wrap"><svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M12 14v3l2 1"/></svg></div>
+                            <h3>Vencimiento</h3>
+                            <p>Identifica cuotas pendientes, pagadas, parciales o vencidas.</p>
+                        </article>
+                        <article class="feature-card">
+                            <div class="icon-wrap"><svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 3h14v18l-3-2-4 2-4-2-3 2zM8 8h8M8 12h8M8 16h4"/></svg></div>
+                            <h3>Comprobantes</h3>
+                            <p>Relaciona cada pago con su cuota, cobrador y número de comprobante.</p>
                         </article>
                     </div>
                 </div>
             </section>
 
-            <section id="testimonios">
+            <section id="reportes">
                 <div class="container">
                     <div class="section-head">
-                        <h2>Clientes que ya transformaron su operación.</h2>
-                        <p>Más de 2.000 equipos financieros confían en Northstar para operar con mayor claridad y previsión.</p>
+                        <h2>Control y trazabilidad para cada operación.</h2>
+                        <p>La información de préstamos, pagos y usuarios queda organizada para facilitar revisiones y auditorías.</p>
                     </div>
 
-                    <div class="testimonial-grid">
-                        <article class="testimonial-card">
-                            <div class="stars">★★★★★</div>
-                            <p>“Redujimos a la mitad el tiempo de cierre financiero y ahora cada área trabaja con la misma fuente de verdad.”</p>
-                            <div class="profile">
-                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="María Pérez">
-                                <div>
-                                    <strong>María Pérez</strong>
-                                    <small>Controller, Atlas Labs</small>
-                                </div>
-                            </div>
+                    <div class="feature-grid">
+                        <article class="feature-card">
+                            <div class="icon-wrap"><svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><path d="m9 12 2 2 4-4"/></svg></div>
+                            <h3>Acceso por roles</h3>
+                            <p>Separa las funciones de administración, cobranza y consulta de clientes.</p>
                         </article>
-
-                        <article class="testimonial-card">
-                            <div class="stars">★★★★★</div>
-                            <p>“La claridad en flujo de caja cambió cómo tomamos decisiones: más rápidos, más seguros y más eficientes.”</p>
-                            <div class="profile">
-                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Daniel Ruiz">
-                                <div>
-                                    <strong>Daniel Ruiz</strong>
-                                    <small>Director financiero, BVX</small>
-                                </div>
-                            </div>
+                        <article class="feature-card">
+                            <div class="icon-wrap"><svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 4h8M9 3h6v3H9zM6 5H4v16h16V5h-2M8 12h8M8 16h5"/></svg></div>
+                            <h3>Bitácora de auditoría</h3>
+                            <p>Conserva acciones, tablas afectadas, detalles del cambio e IP de origen.</p>
                         </article>
-
-                        <article class="testimonial-card">
-                            <div class="stars">★★★★★</div>
-                            <p>“La integración con pagos y presupuestos nos permitió crecer sin sumar más fricción operativa.”</p>
-                            <div class="profile">
-                                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=200&q=80" alt="Sofía Junior">
-                                <div>
-                                    <strong>Sofía Junior</strong>
-                                    <small>COO, Veridian</small>
-                                </div>
-                            </div>
+                        <article class="feature-card">
+                            <div class="icon-wrap"><svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3v18h18M8 16v-4M13 16V7M18 16v-7"/></svg></div>
+                            <h3>Estado de cartera</h3>
+                            <p>Organiza operaciones activas, pendientes, canceladas y en mora.</p>
                         </article>
                     </div>
                 </div>
@@ -1074,10 +1065,10 @@
                 <div class="container">
                     <div class="cta-box">
                         <div>
-                            <h2>Más control, menos riesgos.</h2>
-                            <p>Impulsa tus decisiones financieras con una plataforma diseñada para crecer contigo.</p>
+                            <h2>Gestiona tu cartera con claridad.</h2>
+                            <p>Ingresa al sistema para administrar clientes, préstamos y cobranzas.</p>
                         </div>
-                        <a href="{{ route('register') }}" class="btn btn-primary" style="white-space:nowrap; background:white; color:#0f172a; box-shadow:none;">Solicitar demo</a>
+                        <a href="{{ route('login') }}" class="btn btn-primary" style="white-space:nowrap; background:white; color:#0f172a; box-shadow:none;">Ingresar al sistema</a>
                     </div>
                 </div>
             </section>
@@ -1085,14 +1076,39 @@
 
         <footer>
             <div class="container footer-wrap">
-                <div>© 2026 Northstar Finance. Todos los derechos reservados.</div>
+                <div>© 2026 ASSCOMPANY S.R.L. Sistema de Control Financiero.</div>
                 <div class="footer-links">
                     <a href="#inicio">Inicio</a>
-                    <a href="#soluciones">Soluciones</a>
-                    <a href="#planes">Planes</a>
+                    <a href="#soluciones">Clientes</a>
+                    <a href="#cuotas">Cuotas</a>
                     <a href="#contacto">Contacto</a>
                 </div>
             </div>
         </footer>
+        <script>
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                const revealItems = document.querySelectorAll('main section, .feature-card, .module-card, .check-item');
+
+                document.documentElement.classList.add('reveal-ready');
+
+                if ('IntersectionObserver' in window) {
+                    const revealObserver = new IntersectionObserver((entries, observer) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('is-visible');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+                    revealItems.forEach((item) => {
+                        item.dataset.reveal = '';
+                        revealObserver.observe(item);
+                    });
+                } else {
+                    revealItems.forEach((item) => item.classList.add('is-visible'));
+                }
+            }
+        </script>
     </body>
 </html>
